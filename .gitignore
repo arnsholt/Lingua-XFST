@@ -1,0 +1,6 @@
+.*.swp
+Makefile
+*.o
+pm_to_blib
+blib/
+XFSM.bs
