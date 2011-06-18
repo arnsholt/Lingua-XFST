@@ -2286,9 +2286,6 @@ extern "C" {
      on some arc of the network. Any missing symbols are
      added to the sigma alphabet. */
 
-  /* Shifting initial epsilons*/
-  NETptr shift_initial_epsilons(NETptr /*net*/, unsigned /*max_num_of_epsilons*/);
-
   /* Substitutions */
 
   /* If the keep_p argument is KEEP, the argument networks are
