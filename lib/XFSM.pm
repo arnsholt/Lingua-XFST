@@ -8,11 +8,11 @@ use XFSM::Privates qw//;
 
 our $VERSION = '0.0.1';
 
-my $context;
+our $context;
 
 BEGIN {
     $context = XFSM::Privates::initialize_cfsm();
-    # Turn of verbose mode.
+    # Turn off verbose mode.
     $context->{interface}{general}{verbose} = 0;
 }
 
