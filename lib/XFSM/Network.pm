@@ -132,11 +132,6 @@ a reference to an array containing the resulting strings.
 No known bugs yet. The biggest limitation is the sheer lack of functionality.
 
 
-=head1 SEE ALSO
-
-L<XFSM::Network>, L<XFSM::Privates>
-
-
 =head1 AUTHOR
 
 Arne SkjE<aelig>rholt C<< <arnsholt@gmail.com> >>
