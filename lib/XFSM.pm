@@ -3,6 +3,7 @@ package XFSM;
 use strict;
 use warnings;
 
+use XFSM::Network;
 use XFSM::Privates qw//;
 
 our $VERSION = '0.0.1';
@@ -19,81 +20,51 @@ END {
     XFSM::Privates::reclaim_cfsm($context);
 }
 
-package XFSM::Network;
-
-use Carp;
-
-my $separator;
-my $splitter;
-BEGIN {
-    $separator = pack("U[30]", map {int(rand(26)) + ord('A')} 1 .. 30);
-    $splitter = qr/\Q$separator\E/o;
-}
-
-sub new {
-    my $package = shift;
-    $package = ref $package if ref $package;
-    my %args = (@_,
-        side => XFSM::Privates::UPPER
-    );
-
-    croak qq{Can't create $package from both file and string}
-        if exists $args{file} and exists $args{string};
-
-    # TODO: Handle multiple nets in a file, creating net from string.
-    my $self = {};
-    if(exists $args{file}) {
-        $self->{net} = XFSM::Privates::load_net($args{file}, $context);
-    }
-
-    $self->{side} = $args{side};
-
-    $self->{apply} = XFSM::Privates::init_apply($self->{net}, $self->{side}, $context);
-    $self->{apply}{eol_string} = $separator;
-
-    return bless $self => $package;
-}
-
-sub apply {
-    my ($self, $string, %args) = @_;
-}
-
-sub apply_down {
-    my ($self, $string) = @_;
-
-    if($self->{side} != XFSM::Privates::UPPER) {
-        XFSM::Privates::switch_input_side($self->{apply});
-        $self->{side} = XFSM::Privates::UPPER;
-    }
-
-    return $self->_do_apply($string);
-}
-
-sub apply_up {
-    my ($self, $string) = @_;
-
-    if($self->{side} != XFSM::Privates::LOWER) {
-        XFSM::Privates::switch_input_side($self->{apply});
-        $self->{side} = XFSM::Privates::LOWER;
-    }
-
-    return $self->_do_apply($string);
-}
-
-sub _do_apply {
-    my ($self, $string) = @_;
-
-    my $output = XFSM::Privates::apply_to_string($string, $self->{apply});
-    return [split m/$splitter/o, $output];
-}
-
-# XXX: Looks like this doesn't free all the memory. Need to figure out how to
-# fix that.
-sub DESTROY {
-    my ($self) = @_;
-
-    XFSM::Privates::free_network($self->{net});
-    XFSM::Privates::free_applyer($self->{applyer});
-}
-
 1;
+
+__END__
+
+=head1 NAME
+
+XFSM - Perl bindings for the Xerox FSM libraries
+
+
+=head1 VERSION
+
+This document describes XFSM version 0.0.1
+
+
+=head1 SYNOPSIS
+
+    use XFSM;
+
+    my $net = XFSM::Network->new(file => $filename); # Load network in file $filename
+    my $strings = $net->apply_up($string);           # Strings from applying up
+    my $strings = $net->apply_down($string);         # Strings from applying down
+
+
+=head1 DESCRIPTION
+
+This module wraps the XFSM C library and provides a Perl object interface to
+it. Currently only the bare minimum of functionality is provided, but more is
+coming. The only interface supported is the network class, which can be
+applied to strings in both directions.
+
+For detailed documentation of the network class, see L<XFSM::Network>. The
+brave (and/or desperate) seeking more functionality can access the
+SWIG-generated interface via L<XFSM::Privates>; see that file for details.
+
+
+=head1 BUGS & LIMITATIONS
+
+No known bugs yet. The biggest limitation is the sheer lack of functionality.
+
+
+=head1 SEE ALSO
+
+L<XFSM::Network>, L<XFSM::Privates>
+
+
+=head1 AUTHOR
+
+Arne SkjE<aelig>rholt C<< <arnsholt@gmail.com> >>
