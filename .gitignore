@@ -4,5 +4,5 @@ Makefile.old
 *.o
 pm_to_blib
 blib/
-XFSM.bs
-lib/Lingua/XFSM/Privates.pm
+XFST.bs
+lib/Lingua/XFST/Privates.pm

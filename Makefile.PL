@@ -1,7 +1,7 @@
 use ExtUtils::MakeMaker;
 WriteMakefile(
-    NAME => 'Lingua::XFSM',
+    NAME => 'Lingua::XFST',
     AUTHOR => 'Arne Skjærholt',
     DIR => [qw/privates/],
-    VERSION_FROM => 'lib/Lingua/XFSM.pm'
+    VERSION_FROM => 'lib/Lingua/XFST.pm'
 );

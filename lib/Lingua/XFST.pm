@@ -1,23 +1,23 @@
-package Lingua::XFSM;
+package Lingua::XFST;
 
 use strict;
 use warnings;
 
-use Lingua::XFSM::Network;
-use Lingua::XFSM::Privates qw//;
+use Lingua::XFST::Network;
+use Lingua::XFST::Privates qw//;
 
 our $VERSION = '0.0.1';
 
 our $context;
 
 BEGIN {
-    $context = Lingua::XFSM::Privates::initialize_cfsm();
+    $context = Lingua::XFST::Privates::initialize_cfsm();
     # Turn off verbose mode.
     $context->{interface}{general}{verbose} = 0;
 }
 
 END {
-    Lingua::XFSM::Privates::reclaim_cfsm($context);
+    Lingua::XFST::Privates::reclaim_cfsm($context);
 }
 
 1;
@@ -26,33 +26,33 @@ __END__
 
 =head1 NAME
 
-Lingua::XFSM - Perl bindings for the Xerox FSM libraries
+Lingua::XFST - Perl bindings for the Xerox FSM libraries
 
 
 =head1 VERSION
 
-This document describes Lingua::XFSM version 0.0.1
+This document describes Lingua::XFST version 0.0.1
 
 
 =head1 SYNOPSIS
 
-    use Lingua::XFSM;
+    use Lingua::XFST;
 
-    my $net = Lingua::XFSM::Network->new(file => $filename); # Load network in file $filename
+    my $net = Lingua::XFST::Network->new(file => $filename); # Load network in file $filename
     my $strings = $net->apply_up($string);           # Strings from applying up
     my $strings = $net->apply_down($string);         # Strings from applying down
 
 
 =head1 DESCRIPTION
 
-This module wraps the XFSM C library and provides a Perl object interface to
+This module wraps the XFST C library and provides a Perl object interface to
 it. Currently only the bare minimum of functionality is provided, but more is
 coming. The only interface supported is the network class, which can be
 applied to strings in both directions.
 
-For detailed documentation of the network class, see L<Lingua::XFSM::Network>.
+For detailed documentation of the network class, see L<Lingua::XFST::Network>.
 The brave (and/or desperate) seeking more functionality can access the
-SWIG-generated interface via L<Lingua::XFSM::Privates>; see that file for
+SWIG-generated interface via L<Lingua::XFST::Privates>; see that file for
 details.
 
 
@@ -63,7 +63,7 @@ No known bugs yet. The biggest limitation is the sheer lack of functionality.
 
 =head1 SEE ALSO
 
-L<Lingua::XFSM::Network>, L<Lingua::XFSM::Privates>
+L<Lingua::XFST::Network>, L<Lingua::XFST::Privates>
 
 
 =head1 AUTHOR

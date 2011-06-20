@@ -1,4 +1,4 @@
-%module "Lingua::XFSM::Privates"
+%module "Lingua::XFST::Privates"
 %{
 #include "xfsm_api.h"
 %}

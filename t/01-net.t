@@ -4,11 +4,11 @@ use warnings;
 use Data::Dumper;
 use Test::More tests => 3;
 
-use Lingua::XFSM qw//;
+use Lingua::XFST qw//;
 
 # TODO: Tests.
 #ok 1;
-my $net = Lingua::XFSM::Network->new(file => 't/latin.fst');
+my $net = Lingua::XFST::Network->new(file => 't/latin.fst');
 ok $net, 'creating net from file';
 
 #diag(Dumper($net->apply_up('rosa')));

@@ -1,19 +1,19 @@
 =head1 NAME
 
-Lingua::XFSM::Privates - Direct access to XFSM interface from Perl
+Lingua::XFST::Privates - Direct access to XFST interface from Perl
 
 
 =head1 VERSION
 
-This document describes Lingua::XFSM version 0.0.1
+This document describes Lingua::XFST version 0.0.1
 
 
 =head1 SYNOPSIS
 
-    use Lingua::XFSM::Privates;
+    use Lingua::XFST::Privates;
 
-    my $context Lingua::XFSM::Privates::initialize_cfsm();
-    Lingua::XFSM::Privates::reclaim_cfsm($context);
+    my $context Lingua::XFST::Privates::initialize_cfsm();
+    Lingua::XFST::Privates::reclaim_cfsm($context);
 
 
 =head1 DESCRIPTION
@@ -27,15 +27,15 @@ These bindings are generated with SWIG, using the following command line:
 C<swig -perl5 -const xfsm.i>. This means that SWIG generates proxy classes and
 struture members are available as hash entries. Constants are wrapped with
 constant subs, so that the UPPER C<#define> is available as
-C<Lingua::XFSM::Privates::UPPER> (not C<$Lingua::XFSM::Privates::UPPER>). All
+C<Lingua::XFST::Privates::UPPER> (not C<$Lingua::XFST::Privates::UPPER>). All
 the functions of the C interface are available as subs with the same name in
-the C<Lingua::XFSM::Privates> namespace.
+the C<Lingua::XFST::Privates> namespace.
 
-If the wrapper is loaded with C<use Lingua::XFSM::Privates> no initialisation
-or destruction is performed. If C<use Lingua::XFSM> is used
-C<Lingua::XFSM::Privates::initialize_cfsm()> is called at C<BEGIN> time and
-the returned context is stored in C<$Lingua::XFSM::context>, and at C<END>
-time it will be destroyed with C<Lingua::XFSM::reclaim_cfsm()>.
+If the wrapper is loaded with C<use Lingua::XFST::Privates> no initialisation
+or destruction is performed. If C<use Lingua::XFST> is used
+C<Lingua::XFST::Privates::initialize_cfsm()> is called at C<BEGIN> time and
+the returned context is stored in C<$Lingua::XFST::context>, and at C<END>
+time it will be destroyed with C<Lingua::XFST::reclaim_cfsm()>.
 
 
 =head1 BUGS & LIMITATIONS
@@ -45,7 +45,7 @@ No known bugs yet.
 
 =head1 SEE ALSO
 
-L<Lingua::XFSM>, L<the SWIG documentation|http://swig.org/Doc2.0/>, the XFSM
+L<Lingua::XFST>, L<the SWIG documentation|http://swig.org/Doc2.0/>, the XFST
 documentation.
 
 
