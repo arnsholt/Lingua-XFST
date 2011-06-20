@@ -1,23 +1,23 @@
-package XFSM;
+package Lingua::XFSM;
 
 use strict;
 use warnings;
 
-use XFSM::Network;
-use XFSM::Privates qw//;
+use Lingua::XFSM::Network;
+use Lingua::XFSM::Privates qw//;
 
 our $VERSION = '0.0.1';
 
 our $context;
 
 BEGIN {
-    $context = XFSM::Privates::initialize_cfsm();
+    $context = Lingua::XFSM::Privates::initialize_cfsm();
     # Turn off verbose mode.
     $context->{interface}{general}{verbose} = 0;
 }
 
 END {
-    XFSM::Privates::reclaim_cfsm($context);
+    Lingua::XFSM::Privates::reclaim_cfsm($context);
 }
 
 1;
@@ -26,19 +26,19 @@ __END__
 
 =head1 NAME
 
-XFSM - Perl bindings for the Xerox FSM libraries
+Lingua::XFSM - Perl bindings for the Xerox FSM libraries
 
 
 =head1 VERSION
 
-This document describes XFSM version 0.0.1
+This document describes Lingua::XFSM version 0.0.1
 
 
 =head1 SYNOPSIS
 
-    use XFSM;
+    use Lingua::XFSM;
 
-    my $net = XFSM::Network->new(file => $filename); # Load network in file $filename
+    my $net = Lingua::XFSM::Network->new(file => $filename); # Load network in file $filename
     my $strings = $net->apply_up($string);           # Strings from applying up
     my $strings = $net->apply_down($string);         # Strings from applying down
 
@@ -50,9 +50,10 @@ it. Currently only the bare minimum of functionality is provided, but more is
 coming. The only interface supported is the network class, which can be
 applied to strings in both directions.
 
-For detailed documentation of the network class, see L<XFSM::Network>. The
-brave (and/or desperate) seeking more functionality can access the
-SWIG-generated interface via L<XFSM::Privates>; see that file for details.
+For detailed documentation of the network class, see L<Lingua::XFSM::Network>.
+The brave (and/or desperate) seeking more functionality can access the
+SWIG-generated interface via L<Lingua::XFSM::Privates>; see that file for
+details.
 
 
 =head1 BUGS & LIMITATIONS
@@ -62,7 +63,7 @@ No known bugs yet. The biggest limitation is the sheer lack of functionality.
 
 =head1 SEE ALSO
 
-L<XFSM::Network>, L<XFSM::Privates>
+L<Lingua::XFSM::Network>, L<Lingua::XFSM::Privates>
 
 
 =head1 AUTHOR

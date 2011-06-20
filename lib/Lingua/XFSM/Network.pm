@@ -1,11 +1,11 @@
-package XFSM::Network;
+package Lingua::XFSM::Network;
 
 use strict;
 use warnings;
 
 use Carp;
 
-use XFSM::Privates qw//;
+use Lingua::XFSM::Privates qw//;
 
 my $separator;
 my $splitter;
@@ -18,7 +18,7 @@ sub new {
     my $package = shift;
     $package = ref $package if ref $package;
     my %args = (@_,
-        side => XFSM::Privates::UPPER
+        side => Lingua::XFSM::Privates::UPPER
     );
 
     croak qq{Can't create $package from both file and string}
@@ -27,12 +27,13 @@ sub new {
     # TODO: Handle multiple nets in a file, creating net from string.
     my $self = {};
     if(exists $args{file}) {
-        $self->{net} = XFSM::Privates::load_net($args{file}, $XFSM::context);
+        $self->{net} = Lingua::XFSM::Privates::load_net($args{file}, $Lingua::XFSM::context);
     }
 
     $self->{side} = $args{side};
 
-    $self->{apply} = XFSM::Privates::init_apply($self->{net}, $self->{side}, $XFSM::context);
+    $self->{apply} = Lingua::XFSM::Privates::init_apply($self->{net},
+        $self->{side}, $Lingua::XFSM::context);
     $self->{apply}{eol_string} = $separator;
 
     return bless $self => $package;
@@ -41,9 +42,9 @@ sub new {
 sub apply_down {
     my ($self, $string) = @_;
 
-    if($self->{side} != XFSM::Privates::UPPER) {
-        XFSM::Privates::switch_input_side($self->{apply});
-        $self->{side} = XFSM::Privates::UPPER;
+    if($self->{side} != Lingua::XFSM::Privates::UPPER) {
+        Lingua::XFSM::Privates::switch_input_side($self->{apply});
+        $self->{side} = Lingua::XFSM::Privates::UPPER;
     }
 
     return $self->_do_apply($string);
@@ -52,9 +53,9 @@ sub apply_down {
 sub apply_up {
     my ($self, $string) = @_;
 
-    if($self->{side} != XFSM::Privates::LOWER) {
-        XFSM::Privates::switch_input_side($self->{apply});
-        $self->{side} = XFSM::Privates::LOWER;
+    if($self->{side} != Lingua::XFSM::Privates::LOWER) {
+        Lingua::XFSM::Privates::switch_input_side($self->{apply});
+        $self->{side} = Lingua::XFSM::Privates::LOWER;
     }
 
     return $self->_do_apply($string);
@@ -63,7 +64,7 @@ sub apply_up {
 sub _do_apply {
     my ($self, $string) = @_;
 
-    my $output = XFSM::Privates::apply_to_string($string, $self->{apply});
+    my $output = Lingua::XFSM::Privates::apply_to_string($string, $self->{apply});
     return [split m/$splitter/o, $output];
 }
 
@@ -72,8 +73,8 @@ sub _do_apply {
 sub DESTROY {
     my ($self) = @_;
 
-    XFSM::Privates::free_network($self->{net});
-    XFSM::Privates::free_applyer($self->{applyer});
+    Lingua::XFSM::Privates::free_network($self->{net});
+    Lingua::XFSM::Privates::free_applyer($self->{applyer});
 }
 
 1;
@@ -82,19 +83,19 @@ __END__
 
 =head1 NAME
 
-XFSM::Network - Perl interface to XFSM networks
+Lingua::XFSM::Network - Perl interface to XFSM networks
 
 
 =head1 VERSION
 
-This document describes XFSM version 0.0.1
+This document describes Lingua::XFSM version 0.0.1
 
 
 =head1 SYNOPSIS
 
-    use XFSM;
+    use Lingua::XFSM;
 
-    my $net = XFSM::Network->new(file => $filename); # Load network in file $filename
+    my $net = Lingua::XFSM::Network->new(file => $filename); # Load network in file $filename
     my $strings = $net->apply_up($string);           # Strings from applying up
     my $strings = $net->apply_down($string);         # Strings from applying down
 
@@ -105,7 +106,7 @@ This document describes XFSM version 0.0.1
 
 =item new
 
-    my $net = XFSM::Network->new(file => $filename);
+    my $net = Lingua::XFSM::Network->new(file => $filename);
 
 Loads a network from the file specified in $filename and creates an applyer
 instance bound to that network.
