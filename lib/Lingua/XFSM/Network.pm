@@ -96,8 +96,8 @@ This document describes Lingua::XFSM version 0.0.1
     use Lingua::XFSM;
 
     my $net = Lingua::XFSM::Network->new(file => $filename); # Load network in file $filename
-    my $strings = $net->apply_up($string);           # Strings from applying up
-    my $strings = $net->apply_down($string);         # Strings from applying down
+    my $strings = $net->apply_up($string);                   # Strings from applying up
+    my $strings = $net->apply_down($string);                 # Strings from applying down
 
 
 =head1 DESCRIPTION
