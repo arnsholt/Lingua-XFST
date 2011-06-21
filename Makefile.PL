@@ -3,5 +3,6 @@ WriteMakefile(
     NAME => 'Lingua::XFST',
     AUTHOR => 'Arne Skjærholt',
     DIR => [qw/privates/],
-    VERSION_FROM => 'lib/Lingua/XFST.pm'
+    ABSTRACT_FROM => 'lib/Lingua/XFST.pm',
+    VERSION_FROM => 'lib/Lingua/XFST.pm',
 );

@@ -1,0 +1,6 @@
+#!include_default
+^swig/
+^privates/Privates\.bs$
+^privates/xfsm_wrap\.o$
+^MANIFEST.SKIP$
+^Lingua-XFST-

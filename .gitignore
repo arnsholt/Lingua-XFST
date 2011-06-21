@@ -6,3 +6,7 @@ pm_to_blib
 blib/
 XFST.bs
 lib/Lingua/XFST/Privates.pm
+Lingua-XFST-*
+MANIFEST
+MANIFEST.bak
+MANIFEST.SKIP.bak
