@@ -69,3 +69,12 @@ L<Lingua::XFST::Network>, L<Lingua::XFST::Privates>
 =head1 AUTHOR
 
 Arne SkjE<aelig>rholt C<< <arnsholt@gmail.com> >>
+
+
+=head1 LICENSE & COPYRIGHT
+
+Copyright (c) 2011, Arne SkjE<aelig>rholt C<< <arnsholt@gmail.com> >>. All
+rights reserved.
+
+This module is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself. See L<perlartistic>.
