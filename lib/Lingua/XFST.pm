@@ -6,7 +6,7 @@ use warnings;
 use Lingua::XFST::Network;
 use Lingua::XFST::Privates qw//;
 
-our $VERSION = '0.0.1';
+our $VERSION = '0.1';
 
 our $context;
 
@@ -31,7 +31,7 @@ Lingua::XFST - Perl bindings for the Xerox FSM libraries
 
 =head1 VERSION
 
-This document describes Lingua::XFST version 0.0.1
+This document describes Lingua::XFST version 0.1
 
 
 =head1 SYNOPSIS

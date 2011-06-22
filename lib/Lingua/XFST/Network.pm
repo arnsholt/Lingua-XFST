@@ -88,7 +88,7 @@ Lingua::XFST::Network - Perl interface to XFST networks
 
 =head1 VERSION
 
-This document describes Lingua::XFST version 0.0.1
+This document describes Lingua::XFST version 0.1
 
 
 =head1 SYNOPSIS
